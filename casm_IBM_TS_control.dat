@@ -1,0 +1,96 @@
+Control file for CASM_IBM_TS model - Sep 2018  
+Rem: switch to turn off fortran pauses (1=pauses on, 0=pauses off)
+0
+Specify aquatic system: 1 - generic Midwestern headwater pool; 2 - Midwestern farm pond; 3 - Midwestern emergent wetland
+1
+Rem: file contains bioenergetics and habitat parameters                                       
+.\TS_Bio_Data\casm_TS_bio_parms_RSK_WithTS_08Oct2018.txt                                          
+Rem: file contains modeled food web interactions (diet matrix)                                         
+.\TS_Web_Data\web_casmTS_HRM_20Jun2018.dat                                                                                     
+Rem: file contains environmental input data                                                                      
+.\TS_Env_Data\env_casmTS_2010_08May2018.prn                                                                 
+Specify time step (units = days e.g., 1.0, 0.1, 0.01) (format f5.3)
+0.100
+Specify information on derivatives (i1:0=no info,1=producers only, 2=producers and consumers)
+0
+Rem: Binary variable for nutrient cycling  (0 = no internal cycling, 1 = internal cycling)
+1
+Rem: Binary variable for photosynthesis limitation (0 = multiplication, 1 = geometric mean)
+1
+Rem: file contains daily contaminant concentrations
+.\TS_CASM_Inp\ATZ_exp_zero_test.dat                                                                                            
+Rem:Constant exposure (ppb), format f4.0: (Note: negative value will block constant exposures)
+-10.
+Rem: Choice of Toxicity models:
+Rem: (0) TEF approach, (1) AQUATOX Approach
+0
+Rem: Exposure-response functions: *** FOR TEF APPROACH ONLY ***
+Rem: (0) EC50-derived,  (1) probit, (2) triangular, (3) piecewise linear
+2
+Rem: Chemical analyzed
+Atrazine                                                     
+Rem: Toxicity data file corresponding to above selected E-R function
+.\TS_Tox_Data\TS_toxicity_atrazine_tri_base.dat                                                                               
+Rem: Stress Syndrome: GSS(0) or PSS(1)     Note: consumers will always use GSS, regardless of selection
+1
+Rem:Binary variable knum (1) TEF QA output for producers only, (2) TEF output for producer and consumers
+0
+Rem: Output files for reference simulations and risk assessment
+.\TS_CASM_Out\Tox_Out\casm_tox.out                                                          
+.\TS_CASM_Out\Bio_Out\casm_bio.out                                                      
+.\TS_CASM_Out\TEF_Out\casm_tef.out                                                     
+.\TS_CASM_Out\casm_hst.out                                                                     
+.\TS_CASM_Out\casm_drv.out                                                                     
+.\TS_CASM_Out\Bio_Out\casm_pry.out                                                      
+.\TS_CASM_Out\Ref_Plots\plot_phyto_ref.plt                                               
+.\TS_CASM_Out\Ref_Plots\plot_perip_ref.plt                                              
+.\TS_CASM_Out\Ref_Plots\plot_macro_ref.plt                                                
+.\TS_CASM_Out\Ref_Plots\plot_emerg_ref.plt                                              
+.\TS_CASM_Out\Ref_Plots\plot_zoopl_ref.plt                                               
+.\TS_CASM_Out\Ref_Plots\plot_pofsh_ref.plt                                                
+.\TS_CASM_Out\Ref_Plots\plot_ppfsh_ref.plt                                                  
+.\TS_CASM_Out\Ref_Plots\plot_pbact_ref.plt                                               
+.\TS_CASM_Out\Ref_Plots\plot_binvt_ref.plt                                                          
+.\TS_CASM_Out\ref_Plots\plot_bofsh_ref.plt                                              
+.\TS_CASM_Out\ref_Plots\plot_bpfsh_ref.plt                                             
+.\TS_CASM_Out\ref_Plots\plot_sbact_ref.plt                                            
+.\TS_CASM_Out\ref_Plots\plot_pgild_ref.plt                                             
+.\TS_CASM_Out\ref_Plots\plot_cgild_ref.plt                                              
+.\TS_CASM_Out\eff_Plots\plot_phyto_eff.plt                                              
+.\TS_CASM_Out\eff_Plots\plot_perip_eff.plt                                              
+.\TS_CASM_Out\eff_Plots\plot_macro_eff.plt                                              
+.\TS_CASM_Out\eff_Plots\plot_emerg_eff.plt                                                        
+.\TS_CASM_Out\eff_Plots\plot_zoopl_eff.plt                                                  
+.\TS_CASM_Out\eff_Plots\plot_pofsh_eff.plt                                              
+.\TS_CASM_Out\eff_Plots\plot_ppfsh_eff.plt                                               
+.\TS_CASM_Out\eff_Plots\plot_pbact_eff.plt                                               
+.\TS_CASM_Out\eff_Plots\plot_binvt_eff.plt                                                 
+.\TS_CASM_Out\eff_Plots\plot_bofsh_eff.plt                                               
+.\TS_CASM_Out\eff_Plots\plot_bpfsh_eff.plt                                                 
+.\TS_CASM_Out\eff_Plots\plot_sbact_eff.plt                                              
+.\TS_CASM_Out\eff_Plots\plot_pgild_eff.plt                                                 
+.\TS_CASM_Out\eff_Plots\plot_cgild_eff.plt
+Rem: filename for master DOY 1 transfer file initialization
+.\TS_IBM-CASM\IBM_TS_master_day1_NoTS18Nov2018.out                                                                                                             
+.\TS_IBM-CASM\IBM_TS_master_env1_NoTS18Nov2018.out                                                                                                             
+Rem: switch to use Topeka shiner biomass input data from the IBM(i1): 0=run stand-alone; 1=use IBM inputs
+1
+Rem: switch for reference (0) or toxic effects (1) IBM-CASM simulation
+1
+Rem: filenames of daily Topeka transfer values for the IBM-CASM (a80)            
+.\TS_IBM-CASM\IBM_TS_transfer_bio_WithTSNoTS_18Nov2018.out                                              
+.\TS_IBM-CASM\IBM_TS_transfer_env_WithTSNoTS_18Nov2018.out                                              
+Rem: filenames of daily Topeka shiner biomass values for the IBM-CASM (a80)            
+.\TS_IBM-CASM\IBM_TS_master_ref_risk_IBM00bass_WithTSNoTS_18Nov_01y_ibm.out                                                
+.\TS_IBM-CASM\IBM_TS_master_eff_risk_IBM00bass_WithTSNoTS_18Nov_01y_ibm.out
+Rem: number of simulated years (max=10)
+01
+Rem: option to trace nutrients through simulations (0=no trace; 1=trace)                 
+0
+Rem: filenames for nutrient tracing for stand-alone and IBM modes
+.\TS_IBM-CASM\IBM_TS_master_nutrient-trace_05Nov2018_01y_sa.out                                                
+.\TS_IBM-CASM\IBM_TS_master_nutrient-trace_05Nov2018_01y_ibm.out
+                                    
+                                               
+                                               
+
