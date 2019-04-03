@@ -5,21 +5,20 @@
 rm(list = ls())
 
 ## filepaths and variable definition ###########################################
-# local locations/folder names
-dir.prj  = '' # project directory
-dir.run  = '' # scenario name
+# Initial Folder Locations/Names
+dir.prj = 'D:\\Topeka-shiner-model-master' # project directory
+dir.run = 'LinkedRun' # scenario name
 
-# NetLogo information
+# NetLogo Location/Files
 dir.nl = 'C:/Program Files/NetLogo 6.0.2/app' # NetLogo
 typ.nl = 'netlogo-6.0.2.jar' # NetLogo version
 
-# IBM locations/folder names (all relative to dir.ibm)
-dir.ibm = ''
-dir.mod = 'TS_Model_NoPesticide_27Nov2018.nlogo' # TS model
+# IBM Files (relative to dir.prj)
+dir.mod = 'TS_IBM_March2019.nlogo' # TS model
 dir.inp = 'InputParameters_20Jun2018.txt' # TS input file
 
 # CASM scenario/file names
-dir.casm = '' # CASM base scenario
+dir.casm = 'CASMRun' # CASM scenario name from 1_CASM.R
 dir.exe = 'casm_ibm_tsv42.exe'# CASM exe
 dir.cntl = 'casm_IBM_TS_control.dat' # CASM control file
 dir.hab = 'casm_TS_bio_parms_RSK_WithTS_08Oct2018.txt' # CASM habitat file
@@ -29,10 +28,10 @@ dir.con = 'ATZ_exp_zero_test.dat' # CASM contaminant file
 dir.tox = 'TS_toxicity_atrazine_tri_base.dat' # CASM toxicity file
 
 # Model Parameters
-casm.yrs =  # year of day 1 to pull from CASM
+casm.yr = 1 # year of day 1 to pull from CASM
 
 # Model Parameters - on interface of IBM
-sim.RandomNumberSeed = 6 # random seeds, from sample.int(1000, 20)
+sim.RandomNumberSeed = 6 # random seed
 sim.pondArea = 100 # m2
 sim.CASM_pool_area = 1125 # m2
 sim.Sunfish = TRUE
@@ -41,17 +40,13 @@ sim.DD_egg_larva = TRUE
 sim.AverageKmin = 0.68
 sim.ScalingSearchArea = 1.0
 sim.MaxDetritusDepth = 1.5 # cm
-sim.YearsToRun = 15
 
 ## needed packages #############################################################
 library('RNetLogo')
 
 ## processing ##################################################################
 setwd(dir.prj) # change directory
-
-# create overall scenario name and folder
-dir.create(dir.run)
-setwd(dir.run)
+dir.create(dir.run) # create scenario folder
 
 # create meta data file
 writeLines(
@@ -63,11 +58,10 @@ writeLines(
     
     paste('NetLogo Directory (dir.nl):', dir.nl),
     paste('NetLogo Version (typ.nl):', typ.nl),
-    paste('IBM File Locations (dir.ibm.base):', dir.ibm),
+    
     paste('Model Directory (dir.mod):', dir.mod),
     paste('Input File Location (dir.inp):', dir.inp),
     
-    paste('CASM File Locations (dir.casm):', dir.casm),
     paste('CASM Model Directory (dir.exe):', dir.exe),
     paste('CASM Control File Location (dir.cntl):', dir.cntl),
     paste('CASM Habitat File Location (dir.hab):', dir.hab),
@@ -75,9 +69,9 @@ writeLines(
     paste('CASM Environmental File Location (dir.env):', dir.env),
     paste('CASM Contaminant File Location (dir.con):', dir.con),
     paste('CASM Toxicity File Location (dir.tox):', dir.tox),
-    paste('CASM Data Year used (casm.yrs):', casm.yrs),
+    paste('CASM Data Year used (casm.yr):', casm.yr),
     
-    paste('Random Num Seeds (sim.RandomNumberSeed):', sim.RandomNumberSeed),
+    paste('Random Num Seed (sim.RandomNumberSeed):', sim.RandomNumberSeed),
     paste('Pond Area (sim.pondArea):', sim.pondArea, 'm2'),
     paste('CASM Pond Area (sim.CASM_pool_area):', sim.CASM_pool_area, 'm2'),
     paste('Sunfish Simulation (sim.Sunfish):', sim.Sunfish),
@@ -85,23 +79,23 @@ writeLines(
     paste('Eggs/Larvae Dens. Dependence (sim.DD_egg_larva):', sim.DD_egg_larva),
     paste('Average Kmin (sim.AverageKmin):', sim.AverageKmin),
     paste('Search Area (sim.ScalingSearchArea):', sim.ScalingSearchArea),
-    paste('Detritus Depth (sim.MaxDetritusDepth):', sim.MaxDetritusDepth, 'cm'),
-    paste('Years to Run IBM (sim.YearsToRun):', sim.YearsToRun)
+    paste('Detritus Depth (sim.MaxDetritusDepth):', sim.MaxDetritusDepth, 'cm')
   )), 'meta_scenario.txt')
 
 ## Set Up CASM Part of Simulation ##############################################
-dir.create('TS_CASM_Out') # temp output folder
-dir.create(file.path('TS_CASM_Out', 'plots')) # temp output folder
+dir.create(file.path(dir.run, 'TS_CASM_Out')) # temp output folder
+dir.create(file.path(dir.run, 'TS_CASM_Out', 'plots')) # temp output folder
 
 # copy needed files
-for(temp in c(dir.exe, dir.cntl, dir.hab, dir.web, dir.env, dir.con, dir.tox,
-  'IBM_TS_master_ref.out')){
-  file.copy(file.path(dir.casm, temp), basename(temp))
+for(temp in c('libgcc_s_seh-1.dll', 'libgfortran-3.dll', 'libquadmath-0.dll',
+  file.path(dir.casm, c(dir.exe, dir.cntl, dir.hab, dir.web, dir.env, dir.con,
+    dir.tox, 'IBM_TS_master_ref.out')))){
+  file.copy(temp, file.path(dir.run, basename(temp)))
 }
 rm(temp)
 
 ## change file paths for dir.cntl and other model parameters
-temp = readLines(basename(dir.cntl))
+temp = readLines(file.path(dir.run, basename(dir.cntl)))
 temp[3]  = 0
 temp[7]  = paste0('.\\', basename(dir.hab))
 temp[9]  = paste0('.\\', basename(dir.web))
@@ -119,33 +113,33 @@ temp[82] = '.\\IBM_TS_transfer_env.out'
 temp[84] = '.\\IBM_TS_master_ref.out'
 temp[85] = '.\\IBM_TS_master_eff.out'
 temp[87] = 1
-writeLines(temp, basename(dir.cntl))
+writeLines(temp, file.path(dir.run, basename(dir.cntl)))
 rm(temp)
 
 ## Set Up IBM Part of Simulation ###############################################
 # copy needed files
 for(temp in c(dir.mod, dir.inp)){
-  file.copy(file.path(dir.ibm, temp), basename(temp))
+  file.copy(temp, file.path(dir.run, basename(temp)))
 }
 rm(temp)
 
 # pull CASM day 1 year X for simulation
-temp = readLines('IBM_TS_master_ref.out')
+temp = readLines(file.path(dir.run, 'IBM_TS_master_ref.out'))
 temp = c('IBM-CASM transfer values:', 
   temp[2],
   substr(temp[3], 13, 1136), 
-  substr(temp[(4 + 365 * (casm.yrs - 1))], 13, 1136))
-writeLines(temp, 'IBM_TS_transfer.out') # to keep day 1
+  substr(temp[(4 + 365 * (casm.yr - 1))], 13, 1136))
+writeLines(temp,file.path(dir.run, 'IBM_TS_transfer.out')) # to keep day 1
 rm(temp)
 
 ## copy over & format env transfer
-temp = readLines('IBM_TS_master_ref.out')
+temp = readLines(file.path(dir.run, 'IBM_TS_master_ref.out'))
 temp = c('IBM-CASM transfer environmental values:', 
   'Input values initial environmental factors (mg/L):',
   paste0(substr(temp[3], 13, 18), substr(temp[3], 1139, nchar(temp[3]))),
-  paste0(substr(temp[(4 + 365 * (casm.yrs - 1))], 13, 18), 
-    substr(temp[(4 + 365 * (casm.yrs - 1))], 1139, nchar(temp[3]))))
-writeLines(temp, 'IBM_TS_transfer_env.out')
+  paste0(substr(temp[(4 + 365 * (casm.yr - 1))], 13, 18), 
+    substr(temp[(4 + 365 * (casm.yr - 1))], 1139, nchar(temp[3]))))
+writeLines(temp, file.path(dir.run, 'IBM_TS_transfer_env.out'))
 rm(temp)
 
 ## Run TS Linked ###############################################################
@@ -170,7 +164,7 @@ NLCommand(paste0('set DD_egg_larva ', tolower(sim.DD_egg_larva)))
 NLCommand(paste0('set AverageKmin ', sim.AverageKmin))
 NLCommand(paste0('set ScalingSearchArea ', sim.ScalingSearchArea))
 NLCommand(paste0('set MaxDetritusDepth ', sim.MaxDetritusDepth))
-NLCommand(paste0('set YearsToRun ', sim.YearsToRun))
+NLCommand('set YearsToRun 1')
 
 setwd(file.path(dir.prj, dir.run)) # change directory
 
@@ -185,8 +179,7 @@ for(i in 1:365){
   
   ## rewrite transfer file for next day
   tmp.casm = read.table('IBM_TS_transfer.out', header = FALSE, skip = 3)
-  tmp.ibm = read.table(paste0('out_rns', sim.rns, '.txt'), 
-    header = FALSE, skip = 1)
+  tmp.ibm = read.table('TS-IBM_output.txt', header = FALSE, skip = 1)
   if(tmp.casm[1,1] != tmp.ibm[nrow(tmp.ibm),1]){
     print('Days Do Not Match for Transfer!')
     break
@@ -219,7 +212,7 @@ for(i in 1:365){
   writeLines(tmp.casm.2, 'IBM_TS_transfer.out')
   rm(tmp.casm.2)
   
-  file.remove(paste0('out_rns', sim.rns, '.txt'))
+  file.remove('TS-IBM_output.txt')
   
 }
 rm(i)
@@ -229,7 +222,8 @@ NLCommand('write_output') # write TS output
 NLQuit() # quit session
 
 ## Clean Up environment ########################################################
-rm(dir.prj, dir.run, dir.nl, typ.nl, dir.ibm, dir.mod, dir.inp, dir.casm,
-  dir.env, casm.yrs, sim.RandomNumberSeed, sim.pondArea, sim.CASM_pool_area,
-  sim.Sunfish, sim.Predation, sim.DD_egg_larva, sim.AverageKmin,
-  sim.ScalingSearchArea, sim.MaxDetritusDepth, sim.YearsToRun)
+rm(dir.prj, dir.run, dir.nl, typ.nl, dir.mod, dir.inp, dir.casm, dir.exe,
+  dir.cntl, dir.hab, dir.web, dir.env, dir.con, dir.tox, casm.yr,
+  sim.RandomNumberSeed, sim.pondArea, sim.CASM_pool_area, sim.Sunfish,
+  sim.Predation, sim.DD_egg_larva, sim.AverageKmin, sim.ScalingSearchArea,
+  sim.MaxDetritusDepth)

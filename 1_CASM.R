@@ -1,16 +1,15 @@
 ## Topeka Shiner CASM Set Up ###################################################
 ## Author: CR
-## Last Edited: 2019-01-22
+## Last Edited: 2019-04-03
 ################################################################################
 rm(list = ls())
 
 ## filepaths and variable definition ###########################################
-# local locations/folder names
-dir.prj  = '' # project directory
-dir.run  = '' # scenario name
+# Initial Folder Locations/Names
+dir.prj  = 'D:\\Topeka-shiner-model-master' # project directory
+dir.run  = 'CASMRun' # scenario name
 
-# CASM locations/folder names (all relative to dir.casm)
-dir.casm = '' # folder containing CASM input files
+# CASM Files (note: relative to dir.prj)
 dir.exe = 'casm_ibm_tsv42.exe'# CASM exe
 dir.cntl = 'casm_IBM_TS_control.dat' # CASM control file
 dir.hab = 'casm_TS_bio_parms_RSK_WithTS_08Oct2018.txt' # CASM habitat file
@@ -24,10 +23,7 @@ casm.yrs = 1 # years to simulate (changes dir.cntl)
 
 ## processing ##################################################################
 setwd(dir.prj) # change directory
-
-# create overall scenario name and folder
-dir.create(dir.run)
-setwd(dir.run)
+dir.create(dir.run) # create scenario folder
 
 # create meta data file
 writeLines(
@@ -36,7 +32,6 @@ writeLines(
     paste('Scenario Location (dir.run):', dir.run),
     paste('Created:', Sys.time()),
     paste('Project Directory (dir.prj):', dir.prj),
-    paste('File Locations (dir.casm):', dir.casm),
     paste('Model Directory (dir.exe):', dir.exe),
     paste('Control File Location (dir.cntl):', dir.cntl),
     paste('Habitat File Location (dir.hab):', dir.hab),
@@ -45,20 +40,21 @@ writeLines(
     paste('Contaminant File Location (dir.con):', dir.con),
     paste('Toxicity File Location (dir.tox):', dir.tox),
     paste('Years Run (casm.yrs):', casm.yrs)
-  )), 'meta_scenario.txt')
+  )), file.path(dir.run, 'meta_scenario.txt'))
 
 ## Set Up Simulation ###########################################################
-dir.create('TS_CASM_Out') # temp output folder
-dir.create(file.path('TS_CASM_Out', 'plots')) # temp output folder
+dir.create(file.path(dir.run, 'TS_CASM_Out')) # temp output folder
+dir.create(file.path(dir.run, 'TS_CASM_Out', 'plots')) # temp output folder
 
 # copy needed files
-for(temp in c(dir.exe, dir.cntl, dir.hab, dir.web, dir.env, dir.con, dir.tox)){
-  file.copy(file.path(dir.casm, temp), basename(temp))
+for(temp in c(dir.exe, dir.cntl, dir.hab, dir.web, dir.env, dir.con, dir.tox,
+  'libgcc_s_seh-1.dll', 'libgfortran-3.dll', 'libquadmath-0.dll')){
+  file.copy(temp, file.path(dir.run, basename(temp)))
 }
 rm(temp)
 
 ## change file paths for dir.cntl and other model parameters
-temp = readLines(basename(dir.cntl))
+temp = readLines(file.path(dir.run, basename(dir.cntl)))
 temp[3]  = 0
 temp[7]  = paste0('.\\', basename(dir.hab))
 temp[9]  = paste0('.\\', basename(dir.web))
@@ -76,10 +72,9 @@ temp[82] = '.\\IBM_TS_transfer_env.out'
 temp[84] = '.\\IBM_TS_master_ref.out'
 temp[85] = '.\\IBM_TS_master_eff.out'
 temp[87] = casm.yrs # run x years
-writeLines(temp, basename(dir.cntl))
+writeLines(temp, file.path(dir.run, basename(dir.cntl)))
 rm(temp)
 
 ## Clean Up environment ########################################################
-rm(dir.prj, dir.run)
-rm(dir.casm, dir.exe, dir.cntl, dir.hab, dir.web, dir.env, dir.con, dir.tox)
-rm(casm.yrs)
+rm(dir.prj, dir.run, dir.exe, dir.cntl, dir.hab, dir.web, dir.env, dir.con,
+  dir.tox, casm.yrs)

@@ -616,15 +616,19 @@ to go
   set TS_W lput ((sum [W] of turtles with [stage = "subadult" or stage = "adult"]) / (pondArea * gC_ww_fish)) TS_W
   set TS_W lput ((sum [W] of turtles) / (pondArea * gC_ww_fish)) TS_W ; note that the sum includes eggs and larvae in addition to the three stages above
   ; TS numbers (all TS; stage-specific numbers per m2)
-  set TS_W lput ((count turtles with [stage = "juvenile"]) / pondVolume) TS_W
-  set TS_W lput ((count turtles with [stage = "subadult" or stage = "adult"]) / pondVolume) TS_W
-  set TS_W lput ((count turtles) / pondVolume) TS_W ; note that the sum includes eggs and larvae in addition to the three stages above
+  set TS_W lput ((count turtles with [stage = "juvenile"]) / pondArea) TS_W
+  set TS_W lput ((count turtles with [stage = "subadult" or stage = "adult"]) / pondArea) TS_W
+  set TS_W lput ((count turtles) / pondArea) TS_W ; note that the sum includes eggs and larvae in addition to the three stages above
   ; TS weight and numbers eaten (by largemouth bass) in IBM (eaten biomass diverges from value read in from file because it is translated into specific individual fish eaten)
-  set TS_W lput (TS_eaten_num / pondVolume) TS_W
-  set TS_W lput (TS_eaten_cumulative / pondVolume) TS_W
+  set TS_W lput (TS_eaten_num / pondArea) TS_W
+  set TS_W lput (TS_eaten_cumulative / pondArea) TS_W
   ;; 3 December 2018: lines below added to output table
   set TS_W lput ((sum [W] of turtles with [stage = "egg" and sex = "female"]) / (pondArea * gC_ww_fish)) TS_W ; note that using fish conversion factor might not be accurate to apply to egg weight
   set TS_W lput ((sum [W] of turtles with [stage = "egg" and sex = "male"]) / (pondArea * gC_ww_fish)) TS_W ; note that using fish conversion factor might not be accurate to apply to egg weight
+  with-local-randomness [ ;; local randomness added here because larvae output was added after initial runs: calling sum of turtles uses random number generator
+  set TS_W lput ((sum [W] of turtles with [stage = "larva" and sex = "female"]) / (pondArea * gC_ww_fish)) TS_W ; note that using fish conversion factor might not be accurate to apply to egg weight
+  set TS_W lput ((sum [W] of turtles with [stage = "larva" and sex = "male"]) / (pondArea * gC_ww_fish)) TS_W ; note that using fish conversion factor might not be accurate to apply to egg weight
+  ]
   set TS_W lput ((sum [W] of turtles with [stage = "juvenile" and sex = "female"]) / (pondArea * gC_ww_fish)) TS_W ; note that using fish conversion factor might not be accurate to apply to egg weight
   set TS_W lput ((sum [W] of turtles with [stage = "juvenile" and sex = "male"]) / (pondArea * gC_ww_fish)) TS_W ; note that using fish conversion factor might not be accurate to apply to egg weight
   set TS_W lput ((sum [W] of turtles with [stage = "subadult" and sex = "female"]) / (pondArea * gC_ww_fish)) TS_W
@@ -635,18 +639,20 @@ to go
   set TS_W lput ((sum [W] of turtles with [stage = "adult" and age >= 730 and age < 1095 and sex = "male"]) / (pondArea * gC_ww_fish)) TS_W ; adults 2 yrs old
   set TS_W lput ((sum [W] of turtles with [stage = "adult" and age >= 1095 and sex = "female"]) / (pondArea * gC_ww_fish)) TS_W ; adults 3 yrs old
   set TS_W lput ((sum [W] of turtles with [stage = "adult" and age >= 1095 and sex = "male"]) / (pondArea * gC_ww_fish)) TS_W ; adults 3 yrs old
-  set TS_W lput ((count turtles with [stage = "egg" and sex = "female"]) / (pondArea * gC_ww_fish)) TS_W
-  set TS_W lput ((count turtles with [stage = "egg" and sex = "male"]) / (pondArea * gC_ww_fish)) TS_W
-  set TS_W lput ((count turtles with [stage = "juvenile" and sex = "female"]) / (pondArea * gC_ww_fish)) TS_W
-  set TS_W lput ((count turtles with [stage = "juvenile" and sex = "male"]) / (pondArea * gC_ww_fish)) TS_W
-  set TS_W lput ((count turtles with [stage = "subadult" and sex = "female"]) / (pondArea * gC_ww_fish)) TS_W
-  set TS_W lput ((count turtles with [stage = "subadult" and sex = "male"]) / (pondArea * gC_ww_fish)) TS_W
-  set TS_W lput ((count turtles with [stage = "adult" and age < 730 and sex = "female"]) / (pondArea * gC_ww_fish)) TS_W ; adults 1 yr old
-  set TS_W lput ((count turtles with [stage = "adult" and age < 730 and sex = "male"]) / (pondArea * gC_ww_fish)) TS_W ; adults 1 yr old
-  set TS_W lput ((count turtles with [stage = "adult" and age >= 730 and age < 1095 and sex = "female"]) / (pondArea * gC_ww_fish)) TS_W ; adults 2 yrs old
-  set TS_W lput ((count turtles with [stage = "adult" and age >= 730 and age < 1095 and sex = "male"]) / (pondArea * gC_ww_fish)) TS_W ; adults 2 yrs old
-  set TS_W lput ((count turtles with [stage = "adult" and age >= 1095 and sex = "female"]) / (pondArea * gC_ww_fish)) TS_W ; adults 3 yrs old
-  set TS_W lput ((count turtles with [stage = "adult" and age >= 1095 and sex = "male"]) / (pondArea * gC_ww_fish)) TS_W ; adults 3 yrs old
+  set TS_W lput ((count turtles with [stage = "egg" and sex = "female"]) / pondArea) TS_W
+  set TS_W lput ((count turtles with [stage = "egg" and sex = "male"]) / pondArea) TS_W
+  set TS_W lput ((count turtles with [stage = "larva" and sex = "female"]) / pondArea) TS_W
+  set TS_W lput ((count turtles with [stage = "larva" and sex = "male"]) / pondArea) TS_W
+  set TS_W lput ((count turtles with [stage = "juvenile" and sex = "female"]) / pondArea) TS_W
+  set TS_W lput ((count turtles with [stage = "juvenile" and sex = "male"]) / pondArea) TS_W
+  set TS_W lput ((count turtles with [stage = "subadult" and sex = "female"]) / pondArea) TS_W
+  set TS_W lput ((count turtles with [stage = "subadult" and sex = "male"]) / pondArea) TS_W
+  set TS_W lput ((count turtles with [stage = "adult" and age < 730 and sex = "female"]) / pondArea) TS_W ; adults 1 yr old
+  set TS_W lput ((count turtles with [stage = "adult" and age < 730 and sex = "male"]) / pondArea) TS_W ; adults 1 yr old
+  set TS_W lput ((count turtles with [stage = "adult" and age >= 730 and age < 1095 and sex = "female"]) / pondArea) TS_W ; adults 2 yrs old
+  set TS_W lput ((count turtles with [stage = "adult" and age >= 730 and age < 1095 and sex = "male"]) / pondArea) TS_W ; adults 2 yrs old
+  set TS_W lput ((count turtles with [stage = "adult" and age >= 1095 and sex = "female"]) / pondArea) TS_W ; adults 3 yrs old
+  set TS_W lput ((count turtles with [stage = "adult" and age >= 1095 and sex = "male"]) / pondArea) TS_W ; adults 3 yrs old
   set TS_W_output_list lput TS_W TS_W_output_list
 
   ; development of eggs and larvae (neither are consuming prey)
@@ -1798,6 +1804,8 @@ to write_output
   ;; 3 December 2018: culomns below added to output file
   file-write "TopShiner(eggs_f)"
   file-write "TopShiner(eggs_m)"
+  file-write "TopShiner(larvae_f)"
+  file-write "TopShiner(larvae_m)"
   file-write "TopShiner(juv_f)"
   file-write "TopShiner(juv_m)"
   file-write "TopShiner(subadult_f)"
@@ -1810,6 +1818,8 @@ to write_output
   file-write "TopShiner(adt_3yr_m)"
   file-write "numTopShiner(eggs_f)"
   file-write "numTopShiner(eggs_m)"
+  file-write "numTopShiner(larvae_f)"
+  file-write "numTopShiner(larvae_m)"
   file-write "numTopShiner(juv_f)"
   file-write "numTopShiner(juv_m)"
   file-write "numTopShiner(subadult_f)"
@@ -2015,7 +2025,7 @@ INPUTBOX
 223
 632
 DailyPreyBiomass
-IBM_TS_master_ref_CASM_Default.out
+IBM_TS_master_ref.out
 1
 0
 String
@@ -2060,7 +2070,7 @@ INPUTBOX
 281
 185
 BiomassOutput
-biomass_output_yearly_default_3Dec.txt
+biomass_output_yearly_default_13Mar2019_2.txt
 1
 0
 String
@@ -2424,7 +2434,7 @@ INPUTBOX
 281
 115
 RandomNumberSeed
-48391.0
+6.0
 1
 0
 Number
@@ -2578,15 +2588,15 @@ m2
 HORIZONTAL
 
 @#$#@#$#@
-## WHAT IS IT?
+## Individual-based population model for the Topeka shiner (TS-IBM)
 
+The model is part of the hybrid model approach for the Topeka shiner. 
+The model description is available in Appenix B of the publication:
 
+Schmolke A, Bartell SM, Roy C, Green N, Galic N, Brain R. 2019. Species-specific population dynamics and their link to an aquatic food web: a hybrid modeling approach. Ecological Modelling, in press
 
-## HOW IT WORKS
-
-
-
-## HOW TO USE IT
+The hybrid model (including the current NetLogo model, CASM-TS executable, input files and scripts) is available from:
+https://github.com/Waterborne-env/Topeka-shiner-model
 @#$#@#$#@
 default
 true
@@ -2900,138 +2910,6 @@ setup
 repeat 75 [ go ]
 @#$#@#$#@
 @#$#@#$#@
-<experiments>
-  <experiment name="experiment" repetitions="1" runMetricsEveryStep="true">
-    <setup>setup</setup>
-    <go>go</go>
-    <timeLimit steps="550"/>
-    <metric>[age] of turtles</metric>
-    <metric>[W] of turtles</metric>
-    <metric>[SL] of turtles</metric>
-    <metric>[day_consumption] of turtles</metric>
-    <metric>Prey_W_output_list</metric>
-    <metric>sum ([day_consumption] of turtles)</metric>
-    <enumeratedValueSet variable="WaterConditionInput">
-      <value value="&quot;env_test_const10CTemp.txt&quot;"/>
-      <value value="&quot;env_test_const15CTemp.txt&quot;"/>
-      <value value="&quot;env_test_const20CTemp.txt&quot;"/>
-      <value value="&quot;env_test_const25CTemp.txt&quot;"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="EggWeight">
-      <value value="5.4E-4"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="SunfishFactor">
-      <value value="0.5"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="MinSizeSubadult">
-      <value value="15"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="FunctionalResponse">
-      <value value="&quot;CASM&quot;"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="DailyEggBkgrMortality">
-      <value value="0.1"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="CmaxDepFishWeight">
-      <value value="true"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="pondArea">
-      <value value="50"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="YolkLasting">
-      <value value="5"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="StartSpawning">
-      <value value="152"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="InitialFishNumber">
-      <value value="20"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="StopSpawning">
-      <value value="196"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="DailyPreyBiomass">
-      <value value="&quot;casm_pry_15Sep2017.out&quot;"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="BiomassOutput">
-      <value value="&quot;biomass_output.txt&quot;"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="InputParameters">
-      <value value="&quot;InputParameters.txt&quot;"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="EggDevTime">
-      <value value="5"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="MinSizeMat">
-      <value value="30"/>
-    </enumeratedValueSet>
-  </experiment>
-  <experiment name="experiment" repetitions="1" runMetricsEveryStep="true">
-    <setup>setup</setup>
-    <go>go</go>
-    <timeLimit steps="550"/>
-    <metric>[age] of turtles</metric>
-    <metric>[W] of turtles</metric>
-    <metric>[SL] of turtles</metric>
-    <metric>[day_consumption] of turtles</metric>
-    <metric>Prey_W_output_list</metric>
-    <metric>sum ([day_consumption] of turtles)</metric>
-    <enumeratedValueSet variable="WaterConditionInput">
-      <value value="&quot;env_test_const10CTemp.txt&quot;"/>
-      <value value="&quot;env_test_const15CTemp.txt&quot;"/>
-      <value value="&quot;env_test_const20CTemp.txt&quot;"/>
-      <value value="&quot;env_test_const25CTemp.txt&quot;"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="EggWeight">
-      <value value="5.4E-4"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="SunfishFactor">
-      <value value="0.5"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="MinSizeSubadult">
-      <value value="15"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="FunctionalResponse">
-      <value value="&quot;CASM&quot;"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="DailyEggBkgrMortality">
-      <value value="0.1"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="CmaxDepFishWeight">
-      <value value="true"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="pondArea">
-      <value value="50"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="YolkLasting">
-      <value value="5"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="StartSpawning">
-      <value value="152"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="InitialFishNumber">
-      <value value="20"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="StopSpawning">
-      <value value="196"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="DailyPreyBiomass">
-      <value value="&quot;test_cladoOnly_pry_26Sep2017.txt&quot;"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="BiomassOutput">
-      <value value="&quot;biomass_output.txt&quot;"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="InputParameters">
-      <value value="&quot;InputParameters.txt&quot;"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="EggDevTime">
-      <value value="5"/>
-    </enumeratedValueSet>
-    <enumeratedValueSet variable="MinSizeMat">
-      <value value="30"/>
-    </enumeratedValueSet>
-  </experiment>
-</experiments>
 @#$#@#$#@
 @#$#@#$#@
 default
