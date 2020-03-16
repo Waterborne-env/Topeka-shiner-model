@@ -1,15 +1,13 @@
 # Topeka Shiner Hybrid Model: How To
 Author: Colleen Roy
 
-Last Edited: 2019-04-03
+Last Edited: 2020-03-16
 
 
 ## Disclaimer
-The software and associated files uploaded in this repository were used to generate the results to be published in:
+The software and associated files uploaded in this repository were used to generate the results published in:
 
-Schmolke A, Bartell SM, Roy C, Green N, Galic N, Brain R. Species-specific population dynamics and their link to an aquatic food web: a hybrid modeling approach.
-
-The manuscript has been submitted for review to a scientific journal.
+Schmolke A, Bartell SM, Roy C, Green N, Galic N, Brain R. 2019. Species-specific population dynamics and their link to an aquatic food web: a hybrid modeling approach. Ecological Modelling. 405:1-14
 
 *This software and associated files are provided "as is" with the sole purpose to allow the reproduction of the published results without any warranties of performance or fitness for any other purpose.*
 
