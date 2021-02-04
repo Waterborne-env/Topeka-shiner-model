@@ -1,0 +1,50 @@
+Atrazine toxicity information for triangular E-R (Revised Mar 2008, S.M. Bartell)
+Uses triangular exposure-response function                                                  
+Producer populations                                                             
+     Pop#    Slope       Days    EC50(ug/L)  CASM Population                                                          
+       1      1.76       5.00    60.0        Phytoplankton-diatom1     
+       2      1.76       3.00    69.0        Phytoplankton-diatom2     
+       3      1.76       1.00    38.0        Phytoplankton-chlorophyte1
+       4      1.76       3.00    59.0        Phytoplankton-chlorophyte2
+       5      1.76       3.00    61.0        Phytoplankton-chlorophyte3
+       6      1.76       4.00    88.0        Phytoplankton-chlorophyte4
+       7      1.76       4.00    90.0        Phytoplankton-cyanophyte1 
+       8      1.76       1.00   100.0        Phytoplankton-cyanophyte2 
+       9      1.76       3.00   130.0        Phytoplankton-cyanophyte3 
+      10      1.76       4.00   342.0        Phytoplankton-cyanophyte4 
+      11      1.76       5.00    60.0        Periphyton-diatom1        
+      12      1.76       3.00    69.0        Periphyton-diatom2        
+      13      1.76       2.00   430.0        Periphyton-diatom3        
+      14      1.76       1.00    38.0        Periphyton-chlorophyte1   
+      15      1.76       3.00    61.0        Periphyton-chlorophyte2   
+      16      1.76       3.00    84.0        Periphyton-chlorophyte3   
+      17      1.76       6.00   500.0        Periphyton-cryptophyte1   
+      18      1.76       4.00    90.0        Periphyton-cyanophyte1   
+      19      1.76       1.00   178.0        Periphyton-cyanophyte2   
+      20      1.76       4.00    88.0        Periphyton-euglenoid1    
+      21      1.76      12.00   159.0        Elodea                      
+      22      1.76       8.00   170.0        Potamogeton                   
+Consumer populations                                                                             
+     Pop#     %Effect    Days    EC50(ug/L)  NOEC                                           
+      23      50.0000    2.00       272.     189.    Copepods
+      24      50.0000    2.00     29865.     140.    Chladocerans
+      25      50.0000    2.00       272.     189.    Rotifers
+      26      50.0000    2.00     29865.     140.    Micrzooplankton
+      27      50.0000    4.00     15600.     189.    Red shiner
+      28      50.0000    4.00     17321.     220.    FatheadMinnow
+      29      50.0000    4.00     17321.     220.    OrangeThroatedDarter
+      30      50.0000    4.00     17321.     220.    TopekaShiner (juv)
+      31      50.0000    4.00     17321.     220.    TopekaShiner (adt)
+      32      50.0000    4.00     16000.     189.    Bluegill
+      33      50.0000    4.00     16000.     189.    GreenSunfish
+      34      50.0000    1.00    100000.       0.    Bacterioplankton
+      35      50.0000    2.00     12788.     132.    Ephemeroptera
+      36      50.0000    2.00     12788.     132.    Trichoptera
+      37      50.0000    2.00     12788.     132.    Oligochaetes
+      38      50.0000    2.00       848.     110.    Chironomids
+      39      50.0000    1.00     60000.     132.    Hyalella
+      40      50.0000    4.00     28033.      95.    Creek chub
+      41      50.0000    4.00     17321.     220.    BlackBullhead
+      42      50.0000    4.00     22737.     132.    CommonCarp
+      43      50.0000    4.00     16000.     132.    LargemouthBass
+      44      50.0000    1.00    100000.       0.    Benthic bacteria

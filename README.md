@@ -1,7 +1,7 @@
 # Topeka Shiner Hybrid Model: How To
 Author: Colleen Roy
 
-Last Edited: 2020-03-16
+Last Edited: 2021-02-04
 
 
 ## Disclaimer
@@ -9,9 +9,12 @@ The software and associated files uploaded in this repository were used to gener
 
 Schmolke A, Bartell SM, Roy C, Green N, Galic N, Brain R. 2019. Species-specific population dynamics and their link to an aquatic food web: a hybrid modeling approach. Ecological Modelling. 405:1-14
 
+Schmolke A, Bartell SM, Roy C, Desmarteau D, Moore A, Cox MJ, Maples-Reynolds NL, Galic N, Brain R. Applying a hybrid modeling approach to evaluate potential pesticide effects and mitigation effectiveness in simulated oxbow habitats. Submitted.
+
 *This software and associated files are provided "as is" with the sole purpose to allow the reproduction of the published results without any warranties of performance or fitness for any other purpose.*
 
-## Overview
+## Publication: Schmolke et al. (2019)
+All files associated with this publication are in the folder "Schmolke_2019".
 This how to documents how to run CASM, the TS-IBM, and the linked CASM + TS-IBM in R.
 
 *In order to run either the TS-IBM or the Linked CASM + TS-IBM you must:*
@@ -19,17 +22,17 @@ This how to documents how to run CASM, the TS-IBM, and the linked CASM + TS-IBM 
 2. Have the R package "RNetLogo" installed
 3. Run CASM first (see below for instructions)
 
-## CASM
+### CASM
 **File:** 1_CASM.R
 
-### Change the following lines:
+#### Change the following lines:
 **_Initial Folder Locations/Names:_**
 
 	Line 9: Directory of project (must already exist)
 	Line 10: Name of scenario (note: this will become a folder in the project directory)
-	
+
 **_CASM Files:_**
-	
+
 	Line 13: CASM executable file (ex. casm_ibm_tsv42.exe)
 	Line 14: CASM control file (ex. casm_IBM_TS_control.dat)
 	Line 15: CASM habitat parameters (ex. casm_TS_bio_parms_RSK_WithTS_08Oct2018.txt)
@@ -37,7 +40,7 @@ This how to documents how to run CASM, the TS-IBM, and the linked CASM + TS-IBM 
 	Line 17: CASM environmental time series (ex. env_casmTS_2010_08May2018.prn)
 	Line 18: CASM contaminant time series (ex. ATZ_exp_zero_test.dat)
 	Line 19: CASM toxicity parameters (ex. TS_toxicity_atrazine_tri_base.dat)
-		(note: toxicity scenarios are not considered in this study BUT these files 
+		(note: toxicity scenarios are not considered in this study BUT these files
 		       need to be present for CASM to run correctly)
 Note: Lines 13-19 refer to file paths relative to the project directory (defined in line 9). If these files are not located in the project directory, full file paths must be provided instead of just the file names
 
@@ -45,7 +48,7 @@ Note: Lines 13-19 refer to file paths relative to the project directory (defined
 
 	Line 22: Years to Run CASM (numeric)
 
-### Run the Model
+#### Run the Model
 
 Run the R script.
 
@@ -53,10 +56,10 @@ Run CASM: Run the CASM executable located in the scenario folder (named in line 
 
 The output file containing daily biomasses is named `IBM_TS_master_ref.out` and is located in the scenario folder
 
-## TS-IBM
+### TS-IBM
 **File:** 2_IBMOnly.R
 
-### Change the following lines:
+#### Change the following lines:
 **_Initial Folder Locations/Names:_**
 
 	Line 9: Directory of project (must already exist)
@@ -74,7 +77,7 @@ The output file containing daily biomasses is named `IBM_TS_master_ref.out` and 
 Note: Lines 17-18 refer to file paths relative to the project directory (defined in line 9). If these files are not located in the project directory, full file paths must be provided instead of just the file names
 
 **_CASM Files:_**
-	
+
 	Line 21: Name of CASM scenario created/ran previously (same value as line 9 from 1_CASM.R)
 	Line 22: CASM environmental time series used in CASM scenario (ex. env_casmTS_2010_08May2018.prn)
 Note: Line 22 refers to a file within the CASM scenario folder named in line 21
@@ -96,16 +99,16 @@ Note: Line 22 refers to a file within the CASM scenario folder named in line 21
 	Line 36: TS-IBM MaxDetritusDepth input, numeric
 	Line 37: TS-IBM YearsToRun input, numeric
 
-### Run the Model
+#### Run the Model
 
 Run the R script.
 
 The output file containing daily biomasses is named `TS-IBM_output.txt` and is located in the scenario folder
 
-## Linked CASM + TS-IBM
+### Linked CASM + TS-IBM
 **File:** 3_Linked.R
 
-### Change the following lines:
+#### Change the following lines:
 **_Initial Folder Locations/Names:_**
 
 	Line 9: Directory of project (must already exist)
@@ -123,7 +126,7 @@ The output file containing daily biomasses is named `TS-IBM_output.txt` and is l
 Note: Lines 17-18 refer to file paths relative to the project directory (defined in line 9). If these files are not located in the project directory, full file paths must be provided instead of just the file names
 
 **_CASM Files:_**
-	
+
 	Line 21: Name of CASM scenario created/ran previously (same value as line 9 from 1_CASM.R)
 	Line 22: CASM executable file (ex. casm_ibm_tsv42.exe)
 	Line 23: CASM control file (ex. casm_IBM_TS_control.dat)
@@ -132,7 +135,7 @@ Note: Lines 17-18 refer to file paths relative to the project directory (defined
 	Line 26: CASM environmental time series (ex. env_casmTS_2010_08May2018.prn)
 	Line 27: CASM contaminant time series (ex. ATZ_exp_zero_test.dat)
 	Line 28: CASM toxicity parameters (ex. TS_toxicity_atrazine_tri_base.dat)
-		(note: toxicity scenarios are not considered in this study BUT these files 
+		(note: toxicity scenarios are not considered in this study BUT these files
 		       need to be present for CASM to run correctly)
 Note: Line 22-28 refers to files within the CASM scenario folder named in line 21
 
@@ -152,9 +155,48 @@ Note: Line 22-28 refers to files within the CASM scenario folder named in line 2
 	Line 41: TS-IBM ScalingSearchArea input, numeric
 	Line 42: TS-IBM MaxDetritusDepth input, numeric, units: cm
 
-### Run the Model
+#### Run the Model
 
 Run the R script. *for the linked scenario, R automatically runs CASM, no other steps are needed*
 
 The output file containing daily biomasses is named `TS-IBM_output.txt` and is located in the scenario folder
 
+## Publication: Schmolke et al. (2021)
+All files associated with this publication are in the folder "Schmolke_2021".
+This how to documents how to run CASM and the TS-IBM in R.
+
+*In order to run either the TS-IBM you must:*
+1. Have NetLogo 6 installed (for runs in this study, NetLogo 6.0.2 was used)
+2. Have the R package "RNetLogo" installed
+3. Run CASM first (see below for instructions)
+
+## CASM
+**File:** 1_CASM.R
+
+### Change the following lines:
+
+	Line 8: Directory of project (must already exist)
+	Line 9: Exposure Profile Name (Control, 0VFS, 15VFS, Pond18, or Pond19)
+	Line 10: Multiplication Factor for Exposure Profile
+
+### Run the Model
+
+Run the R script.
+
+The output files containing daily biomasses are named `IBM_TS_master_ref.out` for the unexposed scenario and `IBM_TS_master_eff.out` for the exposure scenario and is located in the scenario folder
+
+## TS-IBM
+**File:** 2_IBMOnly.R
+
+### Change the following lines:
+
+	Line 8: Directory of project (must already exist)
+	Line 9: Exposure Profile Name (Control, 0VFS, 15VFS, or Pond)
+	Line 10: Multiplication Factor for Exposure Profile
+	Line 11: IBM Effects module to use (GUTS-IT, GUTS-SD, GUTS-IT + Sublethal, GUTS-SD + Sublethal, or Sublethal)
+
+### Run the Model
+
+Run the R script.
+
+The output file containing daily biomasses is named `[#]_output.txt` where the number represents the random number seed used for the run and is located in the scenario folder

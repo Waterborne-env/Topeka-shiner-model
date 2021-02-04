@@ -1,0 +1,47 @@
+Solatenol toxicity information for triangular E-R (Aug 2019, S.M. Bartell)                                 
+Uses triangular exposure-response function                                                   
+Producer populations                                                                                       
+     Pop#    Slope       Days    EC50(ug/L)  CASM Population                                                          
+       1      1.76       4.00   240.0        Phytoplankton-diatoms         (Data from EPA risk assessment)
+       2      1.76       4.00   890.0        Phytoplankton-chlorophytes    (Data from EPA risk assessment)
+       3      1.76       4.00   500.8        Phytoplankton-cyanophytes     (ICE Chlorella to anabaena - outside range) 
+       4      1.76       4.00   474.7        Phytoplankton-cryptophytes    (GeoMean of diatoms, chlorophytes, cyanophytes)
+       5      1.76       4.00   474.7        Phytoplankton-euglenoids                        
+       6      1.76       4.00   240.0        Periphyton-diatom1        
+       7      1.76       4.00   890.0        Periphyton-chlorophytes   
+       8      1.76       4.00   500.8        Periphyton-cyanophytes   
+       9      1.76       7.00   880.0        Elodea                      
+      10      1.76       7.00   880.0        Potamogeton                   
+Consumer populations                                                                             
+     Pop#     %Effect    Days LC50/EC50      NOEC (ug/L)                                          
+      11      50.0000    2.00        85.       5.6   Copepods
+      12      50.0000    2.00        85.       5.6   Chladocerans            (Data from EPA risk assessment)
+      13      50.0000    2.00        85.       5.6   Rotifers
+      14      50.0000    2.00        85.       5.6   Micrzooplankton
+      15      50.0000    2.00        85.       5.6   Ostracods
+      16      50.0000    4.00        28.5      0.1   Red shiner              (ICE Fathead to sheepshead minnow)
+      17      50.0000    4.00         4.7      0.95  FatheadMinnow           (Data from EPA risk assessment)
+      18      50.0000    4.00         1.9      0.1   JohnnyDarter            (ICE Fathead to yellow perch)
+      19      50.0000    4.00         4.7      0.1   TopekaShiner (juv)      (Use data for fathead minnow)
+      20      50.0000    4.00         4.7      0.1   TopekaShiner (adt)
+      21      50.0000    4.00         1.9      0.1   Rock bass               (ICE Fathead to yellow perch)
+      22      50.0000    4.00         2.8      0.1   OrgSpottedSunfish       (ICE Fathead to green sunfish - outside range)
+      23      50.0000    4.00         3.5      0.1   Brassy minnow           (Use data for common carp)
+      24      50.0000    4.00         3.5      0.1   Common shiner           (Use data for common carp)
+      25      50.0000    4.00      1686.       0.    Corixids                (GeoMean of chironomids, oligochaetes)
+      26      50.0000    1.00      1000.       0.    Bacterioplankton
+      27      50.0000    2.00      1686.       0.    Ephemeroptera           (GeoMean of chironomids, oligochaetes)
+      28      50.0000    2.00      1686.       0.    Trichoptera             (GeoMean of chironomids, oligochaetes)
+      29      50.0000    2.00      3354.7      0.    Oligochaetes            (ICE D. pulex to Tubifex)
+      30      50.0000   56.00       848.       2.8   Chironomids             (Data from EPA risk assessment)
+      31      50.0000    1.00      1686.       0.    Coleoptera              (GeoMean of chironomids, oligochaetes)
+      32      50.0000    4.00        28.5      0.1   Creek chub              (ICE Fathead to sheepshead minnow)
+      33      50.0000    4.00         3.9      0.1   BlackBullhead           (ICE Fathead to black bullhead)
+      34      50.0000    4.00         3.5      0.1   CommonCarp              (Data from EPA risk assessment)
+      35      50.0000    4.00         3.6      0.1   Golden redhorse         (ICE Fathead to white sucker - outside range)
+      36      50.0000    4.00         2.1      0.1   Sand shiner             (ICE Fathead to Cape Fear shiner - outside range)
+      37      50.0000    4.00         2.3      0.1   Largemouth bass         (ICE Fathead to LMB)
+      38      50.0000    4.00         4.7      0.1   Bluntnose minnow        (Use data for fathead minnow)
+      39      50.0000    4.00         3.5      0.1   Central stoneroller     (Use data for common carp)
+      40      50.0000    4.00         3.6      0.1   White sucker            (ICE Fathead to white sucker - outside range)
+      41      50.0000    1.00      1000.       0.    Benthic bacteria

@@ -1,0 +1,297 @@
+;FOODWEB CONNECTIONS - Generic Midwestern stream (2nd-3rd order)
+; w(i,j) - preference of prey i by predator j
+; a(i,j) - assimilation of ingested prey i by predator j
+;he(i,j) - handling efficiency of prey i by predator j
+;NOTE: phytoplankton have been replaced by additional periphyton in the generic stream system
+;       i = 1,84  prey (including DOC and POC)
+;       j = 1,40  predator
+; 
+; Format of the file:
+; columns 1 - 3  = i       format I3
+; columns 4 - 6  = j       format I3
+; columns 7 -16  = w(i,j)  format G10.2
+; columns 17-26  = a(i,j)  format G10.2
+; columns 27-36  = he(i,j) format G10.2
+; columns 37-76  = comment format A40  
+; A ";" in the first column, comments the line
+; a generic example:
+;  i  j    w(i,j)    a(i,j)   he(i,j)   !Comments
+;
+; Consumer population                 Food/prey population
+; Copepods (zooplankton 1)
+;
+  1  1      0.60      0.45      1.00 !Phytoplankton - Diatom1
+  2  1      0.60      0.45      1.00 !Phytoplankton - Diatom2
+  3  1      0.50      0.55      1.00 !Phytoplankton - Chlorophyte1
+  4  1      0.50      0.55      1.00 !Phytoplankton - Chlorophyte2
+  5  1      0.50      0.55      1.00 !Phytoplankton - Chlorophyte3
+  6  1      0.50      0.55      1.00 !Phytoplankton - Chlorophyte4
+  7  1      0.40      0.35      1.00 !Phytoplankton - Cyanophyte1
+  8  1      0.40      0.35      1.00 !Phytoplankton - Cyanophyte2
+  9  1      0.40      0.35      1.00 !Phytoplankton - Cyanophyte3
+ 10  1      0.40      0.35      1.00 !Phytoplankton - Cyanophyte4
+ 82  1      0.8       0.45      1.00 !Water column POC
+;
+; Cladocerans (zooplankton 2)
+;  
+  1  2      0.50      0.45      1.00 !Phytoplankton - Diatom1
+  2  2      0.50      0.45      1.00 !Phytoplankton - Diatom2
+  3  2      0.50      0.55      1.00 !Phytoplankton - Chlorophyte1
+  4  2      0.50      0.55      1.00 !Phytoplankton - Chlorophyte2
+  5  2      0.50      0.55      1.00 !Phytoplankton - Chlorophyte3
+  6  2      0.50      0.55      1.00 !Phytoplankton - Chlorophyte4
+  7  2      0.40      0.35      1.00 !Phytoplankton - Cyanophyte1
+  8  2      0.40      0.35      1.00 !Phytoplankton - Cyanophyte2
+  9  2      0.40      0.35      1.00 !Phytoplankton - Cyanophyte3
+ 10  2      0.40      0.35      1.00 !Phytoplankton - Cyanophyte4
+ 82  2      0.8       0.35      1.00 !Water column POC
+;
+; Rotifers (zooplankton 3)
+;  
+  1  3      0.50      0.45      1.00 !Phytoplankton - Diatom1
+  2  3      0.50      0.45      1.00 !Phytoplankton - Diatom2
+  3  3      0.50      0.55      1.00 !Phytoplankton - Chlorophyte1
+  4  3      0.50      0.55      1.00 !Phytoplankton - Chlorophyte2
+  5  3      0.50      0.55      1.00 !Phytoplankton - Chlorophyte3
+  6  3      0.50      0.55      1.00 !Phytoplankton - Chlorophyte4
+  7  3      0.40      0.35      1.00 !Phytoplankton - Cyanophyte1
+  8  3      0.40      0.35      1.00 !Phytoplankton - Cyanophyte2
+  9  3      0.40      0.35      1.00 !Phytoplankton - Cyanophyte3
+ 10  3      0.40      0.35      1.00 !Phytoplankton - Cyanophyte4
+ 82  3      0.8       0.35      1.00 !Water column POC
+;
+; Microzooplankton (zooplankton 4)
+;  
+  1  4      0.50      0.45      1.00 !Phytoplankton - Diatom1
+  2  4      0.50      0.45      1.00 !Phytoplankton - Diatom2
+  3  4      0.50      0.55      1.00 !Phytoplankton - Chlorophyte1
+  4  4      0.50      0.55      1.00 !Phytoplankton - Chlorophyte2
+  5  4      0.50      0.55      1.00 !Phytoplankton - Chlorophyte3
+  6  4      0.50      0.55      1.00 !Phytoplankton - Chlorophyte4
+  7  4      0.40      0.35      1.00 !Phytoplankton - Cyanophyte1
+  8  4      0.40      0.35      1.00 !Phytoplankton - Cyanophyte2
+  9  4      0.40      0.35      1.00 !Phytoplankton - Cyanophyte3
+ 10  4      0.40      0.35      1.00 !Phytoplankton - Cyanophyte4
+ 82  4      0.8       0.35      1.00 !Water column POC
+;
+; Red shiner shiner (Pelagic planktivore fish 1)         
+;
+ 61  6      0.4       0.75      1.00 !Ephemeroptera
+ 62  6      0.6       0.75      1.00 !Trichoptera
+ 63  6      0.8       0.75      1.00 !Oligochaetes
+ 64  6      0.8       0.75      1.00 !Chironomids
+;
+; Fathead minnow (Pelagic planktivore fish 2)         
+;
+ 41  7      0.4       0.75      1.00 !Copepods         (zooplankton 1) 
+ 42  7      0.4       0.75      1.00 !Cladocerans      (zooplankton 2)
+ 43  7      0.8       0.75      1.00 !Rotifers         (zooplankton 3) 
+ 44  7      0.6       0.75      1.00 !Microzoopl       (zooplankton 4)
+ 61  7      0.2       0.75      1.00 !Ephemeroptera
+ 62  7      0.2       0.75      1.00 !Trichoptera
+ 63  7      0.6       0.75      1.00 !Oligochaetes
+ 64  7      0.8       0.75      1.00 !Chironomids
+ 84  7      0.6       0.55      1.00 !Sedimented POC
+;
+; Orange throated darter (Pelagic planktivore fish 3)         
+;
+ 61  8      0.6       0.75      1.00 !Ephemeroptera
+ 62  8      0.4       0.75      1.00 !Trichoptera
+ 63  8      0.6       0.75      1.00 !Oligochaetes
+ 64  8      0.8       0.75      1.00 !Chironomids
+ 65  8      0.6       0.75      1.00 !Hyalella
+;
+; Topeka shiner - juvenile (Pelagic planktivore fish 4)                        Harmonized with IBM
+;
+ 41  9      0.25      0.75      1.00 !Copepods         (zooplankton 1) 
+ 42  9      0.25      0.75      1.00 !Cladocerans      (zooplankton 2)
+ 43  9      0.25      0.75      1.00 !Rotifers         (zooplankton 3) 
+ 44  9      0.25      0.75      1.00 !Microzoopl       (zooplankton 4)
+ 84  9      0.25      0.35      1.00 !Sedimented POC
+;
+; Topeka shiner - adult (Pelagic planktivore fish 5)                           Harmonized with IBM
+;
+ 11 10      0.16      0.45      1.00 !Periphyton - Diatom 3
+ 12 10      0.16      0.45      1.00 !Periphyton - Diatom 4
+ 13 10      0.16      0.45      1.00 !Periphyton - Diatom 5
+ 14 10      0.16      0.45      1.00 !Periphyton - Chlorophyte5
+ 15 10      0.16      0.45      1.00 !Periphyton - Chlorophyte6
+ 16 10      0.16      0.45      1.00 !Periphyton - Chlorophyte7
+ 17 10      0.16      0.45      1.00 !Periphyton - Cryptophyte1
+ 18 10      0.16      0.45      1.00 !Periphyton - Cyanophyte5
+ 19 10      0.16      0.45      1.00 !Periphyton - Cyanophyte6
+ 20 10      0.16      0.45      1.00 !Periphyton - Euglenoid1
+ 21 10      0.00      0.45      1.00 !Elodea                         
+ 22 10      0.00      0.45      1.00 !Potamogeton                    
+ 41 10      0.04      0.75      1.00 !Copepods         (zooplankton 1) 
+ 42 10      0.26      0.75      1.00 !Cladocerans      (zooplankton 2)
+ 61 10      0.01      0.75      1.00 !Ephemeroptera
+ 62 10      0.06      0.75      1.00 !Trichoptera
+ 63 10      0.02      0.75      1.00 !Oligochaetes
+ 64 10      0.28      0.75      1.00 !Chironomids
+ 84 10      0.17      0.35      1.00 !Sedimented POC
+;
+; Bluegill  (Pelagic piscivore 1)
+;
+ 41 11      0.6       0.75      1.00 !Copepods         (zooplankton 1) 
+ 42 11      0.6       0.75      1.00 !Cladocerans      (zooplankton 2)
+ 43 11      0.4       0.75      1.00 !Rotifers         (zooplankton 3) 
+ 44 11      0.2       0.75      1.00 !Microzoopl       (zooplankton 4)
+ 61 11      0.6       0.75      1.00 !Ephemeroptera
+ 62 11      0.6       0.75      1.00 !Trichoptera
+ 63 11      0.8       0.75      1.00 !Oligochaetes
+ 64 11      0.8       0.75      1.00 !Chironomids
+ 65 11      0.8       0.75      1.00 !Hyalella
+;
+; Green sunfish  (Pelagic piscivore 2)
+;
+ 41 12      0.6       0.75      1.00 !Copepods         (zooplankton 1) 
+ 42 12      0.6       0.75      1.00 !Cladocerans      (zooplankton 2)
+ 43 12      0.4       0.75      1.00 !Rotifers         (zooplankton 3) 
+ 44 12      0.2       0.75      1.00 !Microzoopl       (zooplankton 4)
+ 61 12      0.6       0.75      1.00 !Ephemeroptera
+ 62 12      0.6       0.75      1.00 !Trichoptera
+ 63 12      0.8       0.75      1.00 !Oligochaetes
+ 64 12      0.8       0.75      1.00 !Chironomids
+ 65 12      0.6       0.75      1.00 !Hyalella
+;
+; Bacterioplankton 
+;  
+ 81 16      1.0       0.8       1.00 !Water column DOC - epi
+ 82 16      1.0       0.8       1.00 !Water column POC
+ 83 16      1.0       0.8       1.00 !water column DOC - hypo
+;
+; Ephemeroptera (benthic invertebrate 1 - mayfly larvae)
+; 
+ 11 21      0.8       0.45      1.00 !Periphyton - Diatom3                 Verified as consumers of algae, detritus, and bacteria
+ 12 21      0.5       0.45      1.00 !Periphyton - Diatom4
+ 13 21      0.5       0.45      1.00 !Periphyton - Diatom5
+ 14 21      0.6       0.55      1.00 !Periphyton - Chlorophyte5
+ 15 21      0.6       0.55      1.00 !Periphyton - Chlorophyte6
+ 16 21      0.8       0.55      1.00 !Periphyton - Chlorophyte7
+ 17 21      0.5       0.45      1.00 !Periphyton - Cryptophyte1
+ 18 21      0.5       0.45      1.00 !Periphyton - Cyanophyte5
+ 19 21      0.5       0.45      1.00 !Periphyton - Cyanophyte6
+ 20 21      0.8       0.55      1.00 !Periphyton - Euglenoid1
+ 76 21      0.8       0.80      1.00 !Sediment bacteria
+;84 21      0.8       0.55      1.00 !Sedimented POC
+;
+; Trichoptera (benthic invertebrate 2 - caddisfly larvae)
+; 
+ 11 22      0.4       0.45      1.00 !Periphyton - Diatom3                Verified as consumers mainly of algae and detritus
+ 12 22      0.4       0.45      1.00 !Periphyton - Diatom4
+ 13 22      0.4       0.45      1.00 !Periphyton - Diatom5
+ 14 22      0.5       0.55      1.00 !Periphyton - Chlorophyte5
+ 15 22      0.5       0.55      1.00 !Periphyton - Chlorophyte6
+ 16 22      0.5       0.55      1.00 !Periphyton - Chlorophyte7
+ 17 22      0.5       0.45      1.00 !Periphyton - Cryptophyte1
+ 18 22      0.2       0.45      1.00 !Periphyton - Cyanophyte5
+ 19 22      0.2       0.45      1.00 !Periphyton - Cyanophyte6
+ 20 22      0.4       0.55      1.00 !Periphyton - Euglenoid1
+ 84 22      0.8       0.55      1.00 !Sedimented POC
+;
+; Oligochaetes (benthic invertebrate 3)
+; 
+ 11 23      0.5       0.45      1.00 !Periphyton - Diatom3               
+ 12 23      0.5       0.45      1.00 !Periphyton - Diatom4
+ 13 23      0.5       0.45      1.00 !Periphyton - Diatom5
+ 14 23      0.7       0.55      1.00 !Periphyton - Chlorophyte5
+ 15 23      0.8       0.55      1.00 !Periphyton - Chlorophyte6
+ 16 23      0.8       0.55      1.00 !Periphyton - Chlorophyte7
+ 17 23      0.6       0.45      1.00 !Periphyton - Cryptophyte1
+ 18 23      0.5       0.45      1.00 !Periphyton - Cyanophyte5
+ 19 23      0.5       0.45      1.00 !Periphyton - Cyanophyte6
+ 20 23      0.8       0.45      1.00 !Periphyton - Euglenoid1
+ 84 23      0.8       0.55      1.00 !Sedimented POC
+;
+; Chironomids (benthic invertebrate 4)
+; 
+  1 24      0.50      0.45      1.00 !Phytoplankton - Diatom1       Verified as feeders of algae, bacteria and detritus
+  2 24      0.50      0.45      1.00 !Phytoplankton - Diatom2
+  3 24      0.50      0.55      1.00 !Phytoplankton - Chlorophyte1
+  4 24      0.50      0.55      1.00 !Phytoplankton - Chlorophyte2
+  5 24      0.50      0.55      1.00 !Phytoplankton - Chlorophyte3
+  6 24      0.50      0.55      1.00 !Phytoplankton - Chlorophyte4
+  7 24      0.40      0.35      1.00 !Phytoplankton - Cyanophyte1
+  8 24      0.40      0.35      1.00 !Phytoplankton - Cyanophyte2
+  9 24      0.40      0.35      1.00 !Phytoplankton - Cyanophyte3
+ 10 24      0.40      0.35      1.00 !Phytoplankton - Cyanophyte4
+ 11 24      0.5       0.45      1.00 !Periphyton - Diatom3               
+ 12 24      0.5       0.45      1.00 !Periphyton - Diatom4
+ 13 24      0.5       0.45      1.00 !Periphyton - Diatom5
+ 14 24      0.7       0.55      1.00 !Periphyton - Chlorophyte5
+ 15 24      0.8       0.55      1.00 !Periphyton - Chlorophyte6
+ 16 24      0.8       0.55      1.00 !Periphyton - Chlorophyte7
+ 17 24      0.6       0.45      1.00 !Periphyton - Cryptophyte1
+ 18 24      0.5       0.45      1.00 !Periphyton - Cyanophyte5
+ 19 24      0.5       0.45      1.00 !Periphyton - Cyanophyte6
+ 20 24      0.8       0.45      1.00 !Periphyton - Euglenoid1
+ 56 24      0.8       0.80      1.00 !Water column bacteria
+ 76 24      0.4       0.80      1.00 !Sediment bacteria
+ 84 24      0.8       0.40      1.00 !Sediment POC
+;
+; Hyalella (benthic invertebrate 5)
+; 
+ 11 25      0.5       0.45      1.00 !Periphyton - Diatom3      Verified as benthic algae and detritus feeder          
+ 12 25      0.5       0.45      1.00 !Periphyton - Diatom4
+ 13 25      0.5       0.45      1.00 !Periphyton - Diatom5
+ 14 25      0.7       0.55      1.00 !Periphyton - Chlorophyte5
+ 15 25      0.8       0.55      1.00 !Periphyton - Chlorophyte6
+ 16 25      0.8       0.55      1.00 !Periphyton - Chlorophyte7
+ 17 25      0.6       0.45      1.00 !Periphyton - Cryptophyte1
+ 18 25      0.5       0.45      1.00 !Periphyton - Cyanophyte5
+ 19 25      0.5       0.45      1.00 !Periphyton - Cyanophyte6
+ 20 25      0.8       0.45      1.00 !Periphyton - Euglenoid1       
+ 84 25      0.9       0.55      1.00 !Sedimented POC
+;
+; Creek chub  (benthic omnivorous fish 1)
+;
+ 61 26      0.6       0.75      1.00 !Ephemeroptera
+ 62 26      0.6       0.75      1.00 !Trichoptera
+ 63 26      0.8       0.75      1.00 !Oligochaetes
+ 64 26      0.8       0.75      1.00 !Chironomids
+ 65 26      0.6       0.75      1.00 !Hyalella
+;
+; Black bullhead (benthic omnivorous fish 2)
+;
+ 41 27      0.6       0.75      1.00 !Copepods         (zooplankton 1) 
+ 61 27      0.5       0.75      1.00 !Ephemeroptera
+ 62 27      0.6       0.75      1.00 !Trichoptera
+ 63 27      0.6       0.75      1.00 !Oligochaetes
+ 64 27      0.8       0.75      1.00 !Chironomids
+ 65 27      0.4       0.5       1.00 !HYalella
+;
+; Common carp (benthivorous fish 3)
+;
+ 21 28      0.2       0.45      1.00 !Elodea                         
+ 22 28      0.1       0.45      1.00 !Potamogeton                    
+ 61 28      0.8       0.75      1.00 !Ephemeroptera
+ 62 28      0.8       0.75      1.00 !Trichoptera
+ 63 28      0.8       0.75      1.00 !Oligochaetes
+ 64 28      0.6       0.75      1.00 !Chironomids
+ 84 28      0.45      0.45      1.00 !Sedimented POC
+;
+; Largemouth bass (benthic piscivore fish 1)
+;
+ 41 31      0.6       0.75      1.00 !Copepods         (zooplankton 1) 
+ 42 31      0.6       0.75      1.00 !Cladocerans      (zooplankton 2)
+ 43 31      0.2       0.75      1.00 !Rotifers         (zooplankton 3) 
+ 44 31      0.1       0.75      1.00 !Microzoopl       (zooplankton 4)
+ 61 31      0.6       0.75      1.00 !Ephemeroptera
+ 62 31      0.6       0.75      1.00 !Trichoptera
+ 63 31      0.8       0.85      1.00 !Oligochaetes
+ 64 31      0.6       0.85      1.00 !Chironomids
+ 46 31      0.8       0.75      1.00 !Red shiner           (pelagic planktovore fish 1)
+ 47 31      0.8       0.75      1.00 !Fathead minnow       (pelagic planktovore fish 2)
+ 48 31      0.8       0.75      1.00 !Orange throat darter (pelagic planktovore fish 3)
+ 49 31      0.4       0.75      1.00 !Topeka shiner - juv  (pelagic planktovore fish 4)
+ 50 31      0.8       0.75      1.00 !Topeka shiner - adt  (pelagic planktovore fish 5)
+ 66 31      0.6       0.75      1.00 !Creek chub           (benthic omnivorous fish 1)
+ 67 31      0.2       0.75      1.00 !Black bullhead       (benthic omnivorous fish 2)
+ 68 31      0.2       0.75      1.00 !Common carp          (benthic omnivorous fish 3)
+;
+; Benthic bacteria
+;
+ 83 36      0.8       0.8       1.00 !Hypolimnetic DOC
+ 84 36      0.8       0.8       1.00 !Sedimented POC
+;
