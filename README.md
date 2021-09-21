@@ -1,7 +1,7 @@
 # Topeka Shiner Hybrid Model: How To
 Author: Colleen Roy
 
-Last Edited: 2021-02-04
+Last Edited: 2021-09-21
 
 
 ## Disclaimer
@@ -9,9 +9,15 @@ The software and associated files uploaded in this repository were used to gener
 
 Schmolke A, Bartell SM, Roy C, Green N, Galic N, Brain R. 2019. Species-specific population dynamics and their link to an aquatic food web: a hybrid modeling approach. Ecological Modelling. 405:1-14
 
-Schmolke A, Bartell SM, Roy C, Desmarteau D, Moore A, Cox MJ, Maples-Reynolds NL, Galic N, Brain R. Applying a hybrid modeling approach to evaluate potential pesticide effects and mitigation effectiveness in simulated oxbow habitats. Submitted.
+Schmolke A, Bartell SM, Roy C, Desmarteau D, Moore A, Cox MJ, Maples-Reynolds NL, Galic N, Brain R. 2021. Applying a hybrid modeling approach to evaluate potential pesticide effects and mitigation effectiveness for an endangered fish in simulated oxbow habitats. Environmental Toxicology and Chemistry. 40:9:2615-2628.
 
 *This software and associated files are provided "as is" with the sole purpose to allow the reproduction of the published results without any warranties of performance or fitness for any other purpose.*
+
+## TRACE Documentation
+CASM: TRACE_documentation_CASM-OC_Jun2021.pdf
+
+TS-IBM: TRACE_documentation_TS-IBM_Jun2021.pdf
+
 
 ## Publication: Schmolke et al. (2019)
 All files associated with this publication are in the folder "Schmolke_2019".
