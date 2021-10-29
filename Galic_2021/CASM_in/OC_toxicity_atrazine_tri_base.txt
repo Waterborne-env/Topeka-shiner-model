@@ -1,0 +1,47 @@
+Atrazine toxicity information for triangular E-R (Revised Mar 2008, S.M. Bartell)
+Uses triangular exposure-response function                                                  
+Producer populations                                                             
+     Pop#    Slope       Days    EC50(ug/L)  CASM Population                                                          
+       1      1.76       5.00    60.0        Phytoplankton-diatoms      
+       2      1.76       1.00    38.0        Phytoplankton-chlorophytes
+       3      1.76       4.00    90.0        Phytoplankton-cyanophytes 
+       4      1.76       1.00   100.0        Phytoplankton-cryptophytes 
+       5      1.76       3.00   130.0        Phytoplankton-euglenoids
+       6      1.76       5.00    60.0        Periphyton-diatom1        
+       7      1.76       1.00    38.0        Periphyton-chlorophytes   
+       8      1.76       4.00    90.0        Periphyton-cyanophytes   
+       9      1.76      12.00   159.0        Elodea                      
+      10      1.76       8.00   170.0        Potamogeton                   
+Consumer populations                                                                             
+     Pop#     %Effect    Days    EC50(ug/L)  NOEC                                           
+      11      50.0000    2.00       272.     189.    Copepods
+      12      50.0000    2.00     29865.     140.    Chladocerans
+      13      50.0000    2.00       272.     189.    Rotifers
+      14      50.0000    2.00     29865.     140.    Micrzooplankton
+      15      50.0000    2.00     29865.     140.    Ostracods
+      16      50.0000    4.00     15600.     189.    Red shiner
+      17      50.0000    4.00     17321.     220.    FatheadMinnow
+      18      50.0000    4.00     17321.     220.    JohnnyDarter
+      19      50.0000    4.00     17321.     250.    TopekaShiner (juv)
+      20      50.0000    4.00     17321.     250.    TopekaShiner (adt)
+      21      50.0000    4.00     16000.     189.    Rock bass
+      22      50.0000    4.00     16000.     189.    OrgSpottedSunfish
+      23      50.0000    4.00     16000.     189.    Brassy minnow
+      24      50.0000    4.00     16000.     189.    Common shiner
+      25      50.0000    4.00     16000.     189.    Corixids
+      26      50.0000    1.00    100000.       0.    Bacterioplankton
+      27      50.0000    2.00     12788.     132.    Ephemeroptera
+      28      50.0000    2.00     12788.     132.    Trichoptera
+      29      50.0000    2.00     12788.     132.    Oligochaetes
+      30      50.0000    2.00       848.     110.    Chironomids
+      31      50.0000    1.00     60000.     132.    Coleoptera
+      32      50.0000    4.00     28033.      95.    Creek chub
+      33      50.0000    4.00     17321.     220.    BlackBullhead
+      34      50.0000    4.00     22737.     132.    CommonCarp
+      35      50.0000    4.00     16000.     132.    Golden redhorse
+      36      50.0000    4.00     16000.     132.    Sand shiner
+      37      50.0000    4.00     16000.     132.    Largemouth bass
+      38      50.0000    4.00     16000.     132.    Bluntnose minnow
+      39      50.0000    4.00     16000.     132.    Central stoneroller
+      40      50.0000    4.00     16000.     132.    White sucker
+      41      50.0000    1.00    100000.       0.    Benthic bacteria

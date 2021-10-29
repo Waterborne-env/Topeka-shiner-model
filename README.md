@@ -1,7 +1,7 @@
 # Topeka Shiner Hybrid Model: How To
 Author: Colleen Roy
 
-Last Edited: 2021-09-21
+Last Edited: 2021-10-29
 
 
 ## Disclaimer
@@ -10,6 +10,8 @@ The software and associated files uploaded in this repository were used to gener
 Schmolke A, Bartell SM, Roy C, Green N, Galic N, Brain R. 2019. Species-specific population dynamics and their link to an aquatic food web: a hybrid modeling approach. Ecological Modelling. 405:1-14
 
 Schmolke A, Bartell SM, Roy C, Desmarteau D, Moore A, Cox MJ, Maples-Reynolds NL, Galic N, Brain R. 2021. Applying a hybrid modeling approach to evaluate potential pesticide effects and mitigation effectiveness for an endangered fish in simulated oxbow habitats. Environmental Toxicology and Chemistry. 40:9:2615-2628.
+
+Galic N, Schmolke A, Bartell SM, Roy C, Brain R. Applying a hybrid model to support management of the endangered Topeka shiner in oxbow habitats. Submitted.
 
 *This software and associated files are provided "as is" with the sole purpose to allow the reproduction of the published results without any warranties of performance or fitness for any other purpose.*
 
@@ -206,3 +208,58 @@ The output files containing daily biomasses are named `IBM_TS_master_ref.out` fo
 Run the R script.
 
 The output file containing daily biomasses is named `[#]_output.txt` where the number represents the random number seed used for the run and is located in the scenario folder
+
+## Publication: Galic et al. (submitted)
+All files associated with this publication are in the folder "Galic_2021".
+This how to documents how to run the One At A Time and Latin Hyper Cube analyses in R.
+
+*In order to run either script you must:*
+1. Have NetLogo 6 installed (for runs in this study, NetLogo 6.0.3 was used)
+2. Have the R package "RNetLogo" installed
+3. Have the R package "lhs" installed (Latin Hyper Cube only)
+
+### One At A Time Analysis
+**File:** OneAtATime.R
+
+#### Change the following lines:
+**_Initial Folder Locations/Names:_**
+
+	Line 8: Directory of project (must already exist)
+	Line 9: Name of scenario (note: this will become a folder in the project directory)
+
+**_IBM Parameters:_**
+
+	Line 10: Number of years to run IBM (numeric)
+	Line 11: Initial Topeka Shiner Biomass (if NA, the CASM value will be used) (numeric)
+	Line 12: Random Number Seeds (numeric list)
+
+**_One At A Time Parameters:_**
+
+	Line 13: Variable to Change (character: 'Te_Th', 'N', 'P', 'TIS', 'depth', 'I0')
+	Line 14: Changes to the Variable (numeric list)
+
+#### Run the Model
+
+Run the R script.
+
+### TS-IBM
+**File:** LatinHyperCube.R
+
+#### Change the following lines:
+**_Initial Folder Locations/Names:_**
+
+	Line 8: Directory of project (must already exist)
+	Line 9: Name of scenario (note: this will become a folder in the project directory)
+
+**_IBM Parameters:_**
+
+	Line 10: Number of years to run IBM (numeric)
+	Line 11: Initial Topeka Shiner Biomass (if NA, the CASM value will be used) (numeric)
+
+**_One At A Time Parameters:_**
+
+	Line 12: Number of Latin Hyper Cube Simulations (numeric) OR filepath to a csv with an already created LHC (character)
+
+#### Run the Model
+
+Run the R script.
